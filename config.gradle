@@ -1,0 +1,56 @@
+ext {
+
+    android = [ // 配置信息
+                compileSdkVersion: 27,
+                buildToolsVersion: "27.0.3",
+                minSdkVersion    : 19,
+                targetSdkVersion : 27,
+                versionCode      : 100,
+                versionName      : "1.0.0"
+    ]
+
+
+    greendao = [ // GreenDao配置
+                 schemaVersion: 1,                               // 数据库schema版本(数据库版本号)
+                 daoPackage   : 'com.caiyi.common.greendao',     // 设置DaoMaster、DaoSession、Dao包名
+                 targetGenDir : 'src/main/java',                 // 设置DaoMaster、DaoSession、Dao目录
+    ]
+
+    // 依赖第三方库版本
+    junitVersion = "4.12"
+    supportVersion = "27.1.0"
+    multidexVersion = "1.0.3"
+    constraintVersion = "1.0.2"
+    statusBarUtilVersion = "1.5.0"
+    retrofitVersion = "2.3.0"
+    converterGsonVersion = "2.0.2"
+    adapterRxjava2Version = "2.2.0"
+    okhttp3Version = "3.9.1"
+    rxjavaVersion = "2.1.8"
+    rxandroidVersion = "2.0.1"
+    glideVersion = "3.7.0"
+    eventBusVersion = "3.1.1"
+    greenDAOVersion = "3.2.2"
+    gsonVersion = "2.8.2"
+    fastjsonVersion = "1.1.68.android"
+    aRouterApiVersion = "1.3.1"
+    vlayoutVersion = "1.2.10@aar"
+    aRouterCompilerVersion = "1.1.4"
+    refreshLayoutVersion = "1.0.4-7"
+    vlayoutVersion = "1.2.10@aar"
+    flycoTabLayoutVersion = "2.1.2@aar"
+    analyticsVersion = "latest.integration"
+    flexibleDividerVersion = "1.4.0"
+    zxingVersion = "3.3.2"
+    bgaBannerVersion = "2.2.4"
+    wechatVersion = "5.1.4"
+    stickyHeadersVersion = "0.4.3@aar"
+    baseRecyclerViewVersion = "2.9.35"
+    RecyclerViewAnimators = "2.2.7"
+    stethoVersion = "1.5.0"
+    butterknifeVersion = "8.8.1"
+    flycoTabLayoutVersion = "2.1.2@aar"
+    immersionBar = "2.3.0"
+    pickerViewVersion = "4.1.3"
+    leakcanaryVersion = "1.5.4"
+}

@@ -1,34 +1,145 @@
 apply plugin: 'com.android.library'
+//apply plugin: 'org.greenrobot.greendao'
+apply plugin: 'com.jakewharton.butterknife'
+
+def config = rootProject.ext.android // 配置
+//def librarys = rootProject.ext.dependencies // 依赖
+def database = rootProject.ext.greendao // 数据库
 
 android {
-    compileSdkVersion 26
-
-
+    compileSdkVersion config.compileSdkVersion
+    buildToolsVersion config.buildToolsVersion
 
     defaultConfig {
-        minSdkVersion 18
-        targetSdkVersion 26
+        minSdkVersion config.minSdkVersion
+        targetSdkVersion config.targetSdkVersion
         versionCode 1
         versionName "1.0"
+        consumerProguardFiles 'proguard-rules.pro'
 
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = [moduleName: project.getName()]
+            }
+        }
+
+    }
+
+    dexOptions {
+        jumboMode true              // 是否忽略方法数限制检查
+    }
+
+    lintOptions {
+        abortOnError false
+        checkReleaseBuilds false
     }
 
     buildTypes {
         release {
+            buildConfigField "boolean", "ONLINE", "true"
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
+        debug {
+            buildConfigField "boolean", "ONLINE", "false"
+        }
     }
-
 }
 
-dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
+//greendao { // greendao配置
+//    schemaVersion database.schemaVersion    // 数据库schema版本(数据库版本号)
+//    daoPackage database.daoPackage          // 设置DaoMaster、DaoSession、Dao包名
+//    targetGenDir database.targetGenDir      // 设置DaoMaster、DaoSession、Dao目录
+//}
 
-    implementation 'com.android.support:appcompat-v7:26.1.0'
-    testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'com.android.support.test:runner:1.0.2'
-    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+dependencies {
+    api fileTree(include: ['*.jar'], dir: 'libs')
+
+    // JUnit
+    testImplementation "junit:junit:$junitVersion"
+
+    // Support
+    api "com.android.support:design:$supportVersion"
+    api "com.android.support:appcompat-v7:$supportVersion"
+    api "com.android.support:cardview-v7:$supportVersion"
+    api "com.android.support:gridlayout-v7:$supportVersion"
+    api "com.android.support:recyclerview-v7:$supportVersion"
+    api "com.android.support:support-annotations:$supportVersion"
+    api "com.android.support:multidex:$multidexVersion"
+    api "com.android.support.constraint:constraint-layout:$constraintVersion"
+
+    // StatusBarUtil(https://github.com/laobie/StatusBarUtil)
+    api "com.jaeger.statusbarutil:library:$statusBarUtilVersion"
+
+    // Retrofit(https://github.com/square/retrofit)
+    api "com.squareup.retrofit2:retrofit:$retrofitVersion"
+    api "com.squareup.retrofit2:converter-gson:$converterGsonVersion"
+    api "com.squareup.retrofit2:adapter-rxjava2:$adapterRxjava2Version"
+
+    // Okhttp3(https://github.com/square/okhttp)
+    api "com.squareup.okhttp3:okhttp:$okhttp3Version"
+
+    // Rxjava2(https://github.com/ReactiveX/RxJava)
+    api "io.reactivex.rxjava2:rxjava:$rxjavaVersion"
+
+    // RxAndroid(https://github.com/ReactiveX/RxAndroid)
+    api "io.reactivex.rxjava2:rxandroid:$rxandroidVersion"
+
+    // Glide(https://github.com/bumptech/glide)
+    api "com.github.bumptech.glide:glide:$glideVersion"
+
+    // EventBus(https://github.com/greenrobot/EventBus)
+    api "org.greenrobot:eventbus:$eventBusVersion"
+
+    // GreenDao(https://github.com/greenrobot/greenDAO)
+    api "org.greenrobot:greendao:$greenDAOVersion"
+
+    // gson(https://github.com/google/gson)
+    api "com.google.code.gson:gson:$gsonVersion"
+
+    // fastjson(https://github.com/alibaba/fastjson)
+    api "com.alibaba:fastjson:$fastjsonVersion"
+
+    // ARouter(https://github.com/alibaba/arouter)
+    api "com.alibaba:arouter-api:$aRouterApiVersion"
+
+    // vlayout(https://github.com/alibaba/vlayout)
+    api "com.alibaba.android:vlayout:$vlayoutVersion"
+    annotationProcessor "com.alibaba:arouter-compiler:$aRouterCompilerVersion"
+
+    // SmartRefreshLayout(https://github.com/scwang90/SmartRefreshLayout)
+    api "com.scwang.smartrefresh:SmartRefreshLayout:$refreshLayoutVersion"
+    api "com.scwang.smartrefresh:SmartRefreshHeader:$refreshLayoutVersion"
+
+    // BGABanner(https://github.com/bingoogolapple/BGABanner-Android)
+    api "cn.bingoogolapple:bga-banner:$bgaBannerVersion"
+
+    // ZXing Core(https://github.com/zxing/zxing)
+    api "com.google.zxing:core:$zxingVersion"
+
+    // stetho(https://github.com/facebook/stetho)
+    api "com.facebook.stetho:stetho:$stethoVersion"
+    api "com.facebook.stetho:stetho-okhttp3:$stethoVersion"
+
+    // butterknife(https://github.com/JakeWharton/butterknife)
+    api "com.jakewharton:butterknife:$butterknifeVersion"
+    annotationProcessor "com.jakewharton:butterknife-compiler:$butterknifeVersion"
+
+    // FlycoTabLayout(https://github.com/H07000223/FlycoTabLayout)
+    api "com.flyco.tablayout:FlycoTabLayout_Lib:$flycoTabLayoutVersion"
+
+    //微信OpenSdK
+    api 'com.tencent.mm.opensdk:wechat-sdk-android-without-mta:+'
+
+    //https://github.com/gyf-dev/ImmersionBar
+    api "com.gyf.barlibrary:barlibrary:$immersionBar"
+
+    //仿ios选择器
+    api "com.contrarywind:Android-PickerView:$pickerViewVersion"
+
+    //leakcanary
+//    debugImplementation "com.squareup.leakcanary:leakcanary-android:$leakcanaryVersion"
+//    releaseImplementation "com.squareup.leakcanary:leakcanary-android-no-op:$leakcanaryVersion"
 }
