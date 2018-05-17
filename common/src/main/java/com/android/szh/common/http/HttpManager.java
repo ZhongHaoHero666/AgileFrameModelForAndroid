@@ -23,9 +23,6 @@ import retrofit2.Retrofit;
 
 /**
  * HttpClient管理器(单例)
- *
- * @author liyunlong
- * @date 2017/8/31 17:19
  */
 public class HttpManager {
 

@@ -23,9 +23,6 @@ import io.reactivex.schedulers.Schedulers;
 
 /**
  * RxJava辅助类
- *
- * @author liyunlong
- * @date 2017/3/3 11:38
  */
 public class RxJavaHelper {
 

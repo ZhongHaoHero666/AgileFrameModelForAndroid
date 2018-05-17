@@ -9,9 +9,6 @@ import io.reactivex.functions.Function;
 
 /**
  * 异常处理
- *
- * @author liyunlong
- * @date 2017/3/22 16:45
  */
 public class ErrorHandlerFunction<T> implements Function<Throwable, Observable<T>> {
 

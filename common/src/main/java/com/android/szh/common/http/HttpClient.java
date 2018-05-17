@@ -47,8 +47,7 @@ import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 /**
- * @author liyunlong
- * @date 2017/8/31 17:19
+ * HttpClient
  */
 public class HttpClient {
 

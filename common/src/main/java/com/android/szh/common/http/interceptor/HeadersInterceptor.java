@@ -16,9 +16,6 @@ import okhttp3.Response;
 
 /**
  * 请求头拦截器(配置公共头部)
- *
- * @author liyunlong
- * @date 2017/8/31 17:21
  */
 public class HeadersInterceptor implements Interceptor {
 

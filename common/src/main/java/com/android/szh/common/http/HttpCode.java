@@ -4,9 +4,6 @@ import android.util.SparseArray;
 
 /**
  * HTTP状态码辅助类
- *
- * @author liyunlong
- * @date 2017/4/5 9:06
  */
 public final class HttpCode {
 

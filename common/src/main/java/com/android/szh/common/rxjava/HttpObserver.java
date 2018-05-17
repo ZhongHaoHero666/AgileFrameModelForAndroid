@@ -9,9 +9,6 @@ import io.reactivex.disposables.Disposable;
 
 /**
  * 基于Observable的网络请求观察者
- *
- * @author liyunlong
- * @date 2017/5/24 17:51
  */
 public abstract class HttpObserver<T> extends BaseObserver<T> {
 

@@ -18,9 +18,6 @@ import java.util.TimeZone;
 
 /**
  * 日期时间工具类
- *
- * @author liyunlong
- * @date 2017/11/21 17:31
  */
 public class DateHelper {
 

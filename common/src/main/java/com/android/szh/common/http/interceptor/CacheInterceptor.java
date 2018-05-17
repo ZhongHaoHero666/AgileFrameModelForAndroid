@@ -13,9 +13,6 @@ import okhttp3.Response;
 
 /**
  * 设置缓存功能
- *
- * @author liyunlong
- * @date 2017/2/4 11:19
  */
 public class CacheInterceptor implements Interceptor {
 

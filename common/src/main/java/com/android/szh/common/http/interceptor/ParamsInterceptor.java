@@ -17,9 +17,6 @@ import okhttp3.Response;
 
 /**
  * 请求参数拦截器(配置公共参数)
- *
- * @author liyunlong
- * @date 2017/8/31 18:43
  */
 public class ParamsInterceptor implements Interceptor {
 

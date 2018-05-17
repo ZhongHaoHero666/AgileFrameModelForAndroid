@@ -5,9 +5,6 @@ import io.reactivex.disposables.Disposable;
 
 /**
  * Disposable辅助类
- *
- * @author liyunlong
- * @date 2017/3/7 17:34
  */
 public class DisposableManager {
 

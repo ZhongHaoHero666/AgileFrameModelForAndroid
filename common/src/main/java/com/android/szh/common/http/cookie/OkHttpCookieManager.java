@@ -12,9 +12,6 @@ import okhttp3.HttpUrl;
 
 /**
  * OkHttp的Cookie管理器
- *
- * @author liyunlong
- * @date 2017/2/4 11:41
  */
 public class OkHttpCookieManager implements ClearableCookieJar {
 

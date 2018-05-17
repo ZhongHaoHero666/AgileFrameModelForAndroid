@@ -14,9 +14,6 @@ import okhttp3.Response;
 
 /**
  * 网络拦截器
- *
- * @author liyunlong
- * @date 2018/1/15 10:04
  */
 public class NetworkInterceptor implements Interceptor {
 

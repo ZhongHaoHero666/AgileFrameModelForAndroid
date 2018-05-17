@@ -33,9 +33,6 @@ import java.util.Map;
 
 /**
  * 判断网络状态的工具类
- *
- * @author liyunlong
- * @date 2017/2/4 11:26
  */
 public class NetworkHelper {
 

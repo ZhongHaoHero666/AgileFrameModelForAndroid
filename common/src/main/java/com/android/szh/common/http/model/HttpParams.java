@@ -14,9 +14,6 @@ import okhttp3.MediaType;
 
 /**
  * 请求参数
- *
- * @author liyunlong
- * @date 2017/8/31 17:32
  */
 public class HttpParams {
 

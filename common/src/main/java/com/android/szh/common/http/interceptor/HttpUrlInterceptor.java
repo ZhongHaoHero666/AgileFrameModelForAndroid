@@ -14,9 +14,6 @@ import okhttp3.Response;
 
 /**
  * 请求Url拦截器(处理Url)
- *
- * @author liyunlong
- * @date 2017/11/27 16:51
  */
 public class HttpUrlInterceptor implements Interceptor {
 
