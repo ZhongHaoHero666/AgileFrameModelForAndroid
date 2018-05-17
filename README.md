@@ -1,7 +1,9 @@
 # AgileFrameModelForAndroid
 一个提供敏捷开发基础服务的android开源组件（An android open source component that provides the basic services of agile development.）
+### 以上为该敏捷开发框架的基础功能，开发者可以直接下载Demo，然后将Common model导入到项目中，然后仿照Demo中app model的业务逻辑实现相应的功能。
+# 具体说明如下 ：
 ## 基础服务组件说明 ##
-* ps:该项目总体架构如下所述，但现在处于逐渐补充的阶段，在本项目未基本完成前，若遇到相应问题，可直接联系qq：564045867
+* 该项目总体架构如下所述，但现在处于逐渐补充的阶段，在本项目未基本完成前，若遇到相应问题，可直接联系qq：564045867
 * 该组件使支持组件化开发，除了主Model(app)和基础服务Model(common)外，其他模块应当由开发者按照业务逻辑进行组件划分
 * 该组件为mvp设计模式，mvp概念可见[MVP模式简介](https://baike.baidu.com/item/MVP%E6%A8%A1%E5%BC%8F/10961746?fr=aladdin)
 * 网络请求采用Retrofit + RxJava + OkHttp（当前主流的网络及异步处理框架）
@@ -9,9 +11,6 @@
 * 发布/订阅事件总线采用EventBus；
 * 路由中间件采用ARouter；
 * 下拉刷新采用SmartRefreshLayout；
-
-### 以上为该敏捷开发框架的基础功能，开发者可以直接下载Demo，然后将Common model导入到项目中，然后仿照Demo中app model的业务逻辑实现相应的功能。
-# 具体说明如下 ：
 
 ## 基础服务组件（Common）功能介绍： ##
 * 第三方依赖及其封装(Rxjava、EventBus、GreenDao、Glide等)//TODO
