@@ -12,7 +12,7 @@ ext {
 
     greendao = [ // GreenDao配置
                  schemaVersion: 1,                               // 数据库schema版本(数据库版本号)
-                 daoPackage   : 'com.caiyi.common.greendao',     // 设置DaoMaster、DaoSession、Dao包名
+                 daoPackage   : 'com.android.szh.common.greendao',     // 设置DaoMaster、DaoSession、Dao包名
                  targetGenDir : 'src/main/java',                 // 设置DaoMaster、DaoSession、Dao目录
     ]
 

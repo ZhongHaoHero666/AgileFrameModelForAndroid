@@ -140,6 +140,6 @@ dependencies {
     api "com.contrarywind:Android-PickerView:$pickerViewVersion"
 
     //leakcanary
-//    debugImplementation "com.squareup.leakcanary:leakcanary-android:$leakcanaryVersion"
-//    releaseImplementation "com.squareup.leakcanary:leakcanary-android-no-op:$leakcanaryVersion"
+    debugImplementation "com.squareup.leakcanary:leakcanary-android:$leakcanaryVersion"
+    releaseImplementation "com.squareup.leakcanary:leakcanary-android-no-op:$leakcanaryVersion"
 }
