@@ -7,6 +7,8 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 
 import com.android.szh.common.mvp.IPresenter;
+import com.android.szh.common.mvp.IView;
+import com.android.szh.common.utils.ReflexHelper;
 import com.gyf.barlibrary.ImmersionBar;
 
 import butterknife.ButterKnife;
@@ -15,7 +17,7 @@ import butterknife.ButterKnife;
  * Created by sunzhonghao on 2018/5/17.
  * desc:Activity基类
  */
-public abstract class BaseActivity<Presenter extends IPresenter> extends AppCompatActivity {
+public abstract class BaseActivity<Presenter extends IPresenter> extends AppCompatActivity implements IView {
     Context mContext;
     protected final String TAG = this.getClass().getSimpleName();
     ImmersionBar mImmersionBar;
@@ -52,17 +54,49 @@ public abstract class BaseActivity<Presenter extends IPresenter> extends AppComp
     /**
      * 初始化完成后加载数据
      */
-    protected abstract void loadData();
+    protected void loadData() {
+    }
+
+
+    /**
+     * 返回Presenter
+     */
+    protected Presenter getPresenter() {
+        if (mPresenter == null) {
+            mPresenter = createPresenter();
+        }
+        if (mPresenter == null) {
+            throw new NullPointerException("Please check the generic Activity.");
+        }
+        return mPresenter;
+    }
+
+    /**
+     * 创建Presenter实例
+     */
+    protected Presenter createPresenter() {
+        Presenter presenter = ReflexHelper.getTypeInstance(this, 0);
+        if (presenter != null && presenter instanceof BasePresenter) {
+            presenter.attachView(this);
+        }
+        return presenter;
+    }
 
     /**
      * 在页面绘制之前执行的逻辑
      */
-    protected abstract void beforeSuper();
+    protected void beforeSuper() {
+    }
+
+    ;
 
     /**
      * 处理页面之间传递的数据
      */
-    protected abstract void handleIntent(Intent intent);
+    protected void handleIntent(Intent intent) {
+    }
+
+    ;
 
     /**
      * 初始化数据
@@ -79,5 +113,13 @@ public abstract class BaseActivity<Presenter extends IPresenter> extends AppComp
      */
     protected boolean isImmersionPage() {
         return false;
+    }
+
+    /**
+     * @return 获取context
+     */
+    @Override
+    public Context getContext() {
+        return mContext;
     }
 }

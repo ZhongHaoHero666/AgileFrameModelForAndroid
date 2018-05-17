@@ -11,12 +11,12 @@ public class UrlConfig {
     /**
      * 正式域名
      */
-    public static final String DOMAIN_ONLINE = "";
+    public static final String DOMAIN_ONLINE = "http://pv.sohu.com";
 
     /**
      * 测试域名
      */
-    public static final String DOMAIN_TEST = "";
+    public static final String DOMAIN_TEST = "http://pv.sohu.com";
 
     /**
      * @return 当前环境baseUrl
