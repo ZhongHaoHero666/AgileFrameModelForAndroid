@@ -13,15 +13,28 @@
 * 下拉刷新采用SmartRefreshLayout；
 
 ## 基础服务组件（Common）功能介绍： ##
-* 第三方依赖及其封装(Rxjava、EventBus、GreenDao、Glide等)//TODO
-* Activity、Fragment、Adapter的基类//TODO
+* 第三方依赖及其封装(Rxjava、EventBus、GreenDao、Glide等)
+* Activity、Fragment、Adapter的基类
 * 网络请求和错误处理封装//TODO
-* 图片加载封装//TODO
-* 日志封装//TODO
+* 图片加载封装
+* 日志封装
 * MVP封装
-* 权限请求封装//TODO
+* 权限请求封装
 * 有数据、无数据、加载中、加载失败、网络异常、网络不佳页面切换管理器//TODO
-* 通用的接口、常量类、工具类和公共组件//TODO
+* 通用的接口、常量类、工具类和公共组件
+
+## app 包结构介绍： ##
+*   activity：
+    *   MainActivity：主界面
+    *   MVPTestActivity：mvp 模式演示类的view
+    *   PermissionAndCameraActivity：权限请求及相机相册调用的演示类
+*   api：模块的接口管理
+*   contract：mvp契约接口管理类
+*   entry：实体类
+*   model：mvp数据处理类Model
+*   presenter：mvp主持者Prsenter 用于实现view 和 model的交互
+    
+## Common 包结构介绍： ##
 
 ## 组件引用的第三方依赖 ##
 * [Retrofit](https://github.com/square/retrofit)
@@ -36,5 +49,5 @@
 * [FlycoTabLayout](https://github.com/H07000223/FlycoTabLayout)
 * [SmartRefreshLayout](https://github.com/scwang90/SmartRefreshLayout)
 
-## Common 包结构介绍： ##
+
 
