@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/bottom_pop_item_action"
+    android:layout_width="match_parent"
+    android:layout_height="50dp"
+    android:gravity="center"
+    android:singleLine="true"
+    android:text="内容"
+    android:textColor="@color/bottom_action_text"
+    android:textSize="16sp" />

@@ -8,10 +8,17 @@ import android.support.v7.app.AppCompatActivity;
 
 import com.android.szh.common.mvp.IPresenter;
 import com.android.szh.common.mvp.IView;
+import com.android.szh.common.rxjava.BaseObserver;
+import com.android.szh.common.rxjava.RxJavaHelper;
+import com.android.szh.common.rxjava.transformer.ObservableTransformerAsync;
+import com.android.szh.common.rxjava.transformer.ObservableTransformerError;
 import com.android.szh.common.utils.ReflexHelper;
 import com.gyf.barlibrary.ImmersionBar;
 
 import butterknife.ButterKnife;
+import io.reactivex.Observable;
+import io.reactivex.disposables.CompositeDisposable;
+import io.reactivex.disposables.Disposable;
 
 /**
  * Created by sunzhonghao on 2018/5/17.
@@ -35,7 +42,6 @@ public abstract class BaseActivity<Presenter extends IPresenter> extends AppComp
         }
         setContentView(getContentLayoutId());  // 加载页面布局
         ButterKnife.bind(this);         // butterKnife绑定
-
         initViews();                           // 初始化view
         if (isImmersionPage()) {
             initImmersion();
@@ -82,13 +88,65 @@ public abstract class BaseActivity<Presenter extends IPresenter> extends AppComp
         return presenter;
     }
 
+    @Override
+    protected void onDestroy() {
+        if (mImmersionBar != null) {
+            mImmersionBar.destroy();
+        }
+
+        if (mPresenter != null) {
+            mPresenter.detachView();
+            mPresenter = null;
+        }
+        unsubscribe();//反注册订阅的异步处理
+        super.onDestroy();
+    }
+
+    /**
+     * 若是在activity中进行轻量的数据访问
+     */
+
+    private CompositeDisposable mCompositeDisposable; //订阅事件管理器
+
+    protected CompositeDisposable getCompositeDisposable() {
+        if (mCompositeDisposable == null) {
+            mCompositeDisposable = new CompositeDisposable();
+        }
+        return mCompositeDisposable;
+    }
+
+    public void unsubscribe() {
+        getCompositeDisposable().dispose();
+        mCompositeDisposable = null;
+    }
+
+
+    /**
+     * 订阅(异步)
+     *
+     * @param <T>        观察项目类型
+     * @param observable 被观察者
+     * @param observer   观察者
+     */
+    public <T> Disposable subscribe(Observable<T> observable, final BaseObserver<T> observer) {
+        observable = observable
+                .compose(new ObservableTransformerAsync<T>())
+                .compose(new ObservableTransformerError<T>());
+        Disposable disposable = RxJavaHelper.subscribe(observable, observer);// 建立订阅关系
+        add(disposable);
+        return disposable;
+    }
+
+    public boolean add(@io.reactivex.annotations.NonNull Disposable disposable) {
+        return getCompositeDisposable().add(disposable);
+    }
+
     /**
      * 在页面绘制之前执行的逻辑
      */
     protected void beforeSuper() {
     }
 
-    ;
 
     /**
      * 处理页面之间传递的数据

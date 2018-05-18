@@ -7,17 +7,16 @@
     tools:context="com.android.szh.agileframedemo.activity.MainActivity">
 
     <Button
-        android:id="@+id/btn_show_mvp"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_margin="5dp"
-        android:text="进入到mvp演示类" />
-
-    <Button
         android:id="@+id/btn_check_permission"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_margin="5dp"
-        android:text="调用权限辅助类检查相机权限" />
+        android:text="检查相机权限并打开相机相册" />
 
+    <ImageView
+        android:id="@+id/iv_photo"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="100dp" />
 </LinearLayout>

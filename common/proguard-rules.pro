@@ -125,6 +125,8 @@
 -keep class * implements com.android.szh.common.mvp.IMVPModel
 -keep class * implements com.android.szh.common.mvp.IPresenter
 
+-keep class com.android.szh.common.glide.GlideModelConfig
+
 # 保持 Parcelable 序列化的类不被混淆(注：aidl文件不能去混淆)
 -keep class * implements android.os.Parcelable {
     public static final android.os.Parcelable$Creator *;

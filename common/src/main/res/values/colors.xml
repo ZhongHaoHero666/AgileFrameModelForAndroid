@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#fc5638</color>
+    <color name="colorPrimaryDark">#fc5638</color>
+    <color name="colorAccent">#009688</color>
+
+
+    <!-- 页面底部操作文本字体颜色 -->
+    <color name="bottom_action_text">#0098ef</color>
+    <!-- 自定义对话框按钮正常状态的背景颜色 -->
+    <color name="dialog_single_button_normal">#ffffff</color>
+    <!-- 自定义对话框按钮按下状态的背景颜色 -->
+    <color name="dialog_single_button_pressed">#cccccc</color>
+
+    <!-- 列表条目内部分割线颜色 -->
+    <color name="divider_line_color">#dfdfdf</color>
+    <color name="bottom_popupwindow_divider">#e8e8e7</color>
+
+    <!-- 列表条目按下状态的背景颜色 -->
+    <color name="column_pressed">#ebebeb</color>
+    <color name="column_label">#191919</color>
+
+
+</resources>

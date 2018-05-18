@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:background="@drawable/bg_custom_dialog_round_corner"
+    android:gravity="center"
+    android:minHeight="135dp"
+    android:minWidth="135dp"
+    android:orientation="vertical">
+
+    <ImageView
+        android:id="@+id/state_dialog_icon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/icon_state_prompt" />
+
+    <TextView
+        android:id="@+id/state_dialog_message"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:ems="6"
+        android:gravity="center"
+        android:text="请求成功"
+        android:textColor="#5c5c5c"
+        android:textSize="14sp" />
+</LinearLayout>

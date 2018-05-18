@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="bottom"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/bottom_pop_title"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:alpha="0.95"
+        android:background="@android:color/white"
+        android:gravity="center"
+        android:paddingLeft="35dp"
+        android:paddingRight="35dp"
+        android:textColor="#707070"
+        android:textSize="14sp"
+        android:visibility="gone" />
+
+    <View
+        android:id="@+id/bottom_pop_title_divider"
+        style="@style/Divider_Line_Outer_Base"
+        android:visibility="gone" />
+
+    <LinearLayout
+        android:id="@+id/bottom_pop_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#f3f3f3"
+        android:orientation="vertical">
+
+        <ListView
+            android:id="@+id/bottom_pop_list"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:divider="@color/divider_line_color"
+            android:dividerHeight="1px"
+            android:fadeScrollbars="false"
+            android:fadingEdge="none"
+            android:fadingEdgeLength="0dp"
+            android:fastScrollEnabled="false"
+            android:overScrollMode="never"
+            android:scrollbars="none"
+            android:visibility="gone" />
+
+    </LinearLayout>
+
+    <View
+        android:id="@+id/bottom_pop_divider"
+        android:layout_width="match_parent"
+        android:layout_height="15dp"
+        android:background="@color/bottom_popupwindow_divider" />
+
+    <Button
+        android:id="@+id/bottom_pop_cancle"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@drawable/selector_white_gray"
+        android:gravity="center"
+        android:text="取消"
+        android:textColor="@color/column_label" />
+
+</LinearLayout>

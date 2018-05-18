@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <integer name="slide_anim_duration">320</integer>
+
+    <dimen name="dialog_round_conner">8dp</dimen>
+    <!-- 列表条目左侧标题字体大小 -->
+    <dimen name="column_label">16sp</dimen>
+</resources>
+
+
+
+
+
+
