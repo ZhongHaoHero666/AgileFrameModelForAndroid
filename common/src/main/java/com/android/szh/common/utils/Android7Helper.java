@@ -11,7 +11,7 @@ import android.provider.MediaStore;
 import android.support.v4.content.FileProvider;
 import android.text.TextUtils;
 
-import com.android.szh.common.image.ImagePathHelper;
+import com.android.szh.common.imageloader.image.ImagePathHelper;
 
 import java.io.File;
 import java.util.List;

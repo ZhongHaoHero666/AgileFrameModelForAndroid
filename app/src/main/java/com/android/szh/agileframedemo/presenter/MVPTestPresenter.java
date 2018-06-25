@@ -6,6 +6,7 @@ import com.android.szh.agileframedemo.contract.MVPTestContract;
 import com.android.szh.agileframedemo.entry.CityInfo;
 import com.android.szh.agileframedemo.model.MVPTestModel;
 import com.android.szh.common.http.exception.HttpException;
+import com.android.szh.common.logger.Logger;
 import com.android.szh.common.rxjava.HttpObserver;
 
 import org.json.JSONException;
@@ -26,6 +27,7 @@ public class MVPTestPresenter extends MVPTestContract.Presenter<MVPTestModel> {
         subscribe(getModel().getCityInfo(), new HttpObserver<ResponseBody>(getContext()) {
             @Override
             public void _onNext(ResponseBody responseBody) {
+                Logger.i("getData success");
                 try {
                     CityInfo cityInfo = new CityInfo();
                     String result = responseBody.string();
@@ -49,7 +51,7 @@ public class MVPTestPresenter extends MVPTestContract.Presenter<MVPTestModel> {
 
             @Override
             public void _onError(HttpException exception) {
-
+                Logger.i(exception.getMessage());
             }
         });
     }

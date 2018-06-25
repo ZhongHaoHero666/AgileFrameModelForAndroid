@@ -1,4 +1,4 @@
-package com.android.szh.common.image;
+package com.android.szh.common.imageloader.image;
 
 import android.content.Context;
 import android.graphics.Bitmap;

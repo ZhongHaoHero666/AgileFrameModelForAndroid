@@ -9,7 +9,7 @@ import android.widget.ImageView;
 import com.android.szh.agileframedemo.R;
 import com.android.szh.common.base.BaseActivity;
 import com.android.szh.common.constant.UserAvatorConfig;
-import com.android.szh.common.image.Compressor;
+import com.android.szh.common.imageloader.image.Compressor;
 import com.android.szh.common.imageloader.ImageLoader;
 import com.android.szh.common.imageloader.ImageLoaderOptions;
 import com.android.szh.common.logger.Logger;
@@ -194,7 +194,7 @@ public class PermissionAndCameraActivity extends BaseActivity {
                 .subscribe(new Consumer<File>() {
                     @Override
                     public void accept(File file) throws Exception {
-                        //TODO 压缩完毕后上传图片
+                        //TODO 压缩完毕后上传图片 可以使用Luban
                         //your business
                         ToastUtil.showToast("start your business after compress");
                         ImageLoader.loadFromFile(ivPhoto, file, ImageLoaderOptions.getDefaultOptions());
