@@ -14,7 +14,7 @@
 
 ## 基础服务组件（Common）功能介绍： ##
 * 第三方依赖及其封装(Rxjava、EventBus、GreenDao、Glide等)
-* Activity、Fragment、Adapter的基类
+* Activity、Fragment、Adapter的基类(异步请求，通知，转场动画诸多功能均已实现)
 * 网络请求和错误处理封装//TODO
 * 图片加载封装
 * 日志封装
