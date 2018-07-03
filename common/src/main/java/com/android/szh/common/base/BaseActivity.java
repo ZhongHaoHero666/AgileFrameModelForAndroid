@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 
+import com.android.szh.common.R;
 import com.android.szh.common.mvp.IPresenter;
 import com.android.szh.common.mvp.IView;
 import com.android.szh.common.rxjava.BaseObserver;
@@ -36,11 +37,18 @@ public abstract class BaseActivity<Presenter extends IPresenter> extends AppComp
         mContext = this;
         beforeSuper();                         // 初始化(super.onCreate(savedInstanceState)之前调用)
         super.onCreate(savedInstanceState);
+
+        if (usePageAnimation()) {
+            initSmoothPageAnimation(true);                  // 初始化进退场动画
+        }
+
         Intent intent = getIntent();
         if (intent != null) {
             handleIntent(intent);              // 处理Intent(主要用来获取其中携带的参数)
         }
+
         setContentView(getContentLayoutId());  // 加载页面布局
+
         ButterKnife.bind(this);         // butterKnife绑定
         initViews();                           // 初始化view
         if (isImmersionPage()) {
@@ -179,5 +187,68 @@ public abstract class BaseActivity<Presenter extends IPresenter> extends AppComp
     @Override
     public Context getContext() {
         return mContext;
+    }
+
+    @Override
+    public void finish() {
+        super.finish();
+
+        if (usePageAnimation()) {
+            initSmoothPageAnimation(false);    //关闭时的转场动画
+        }
+
+    }
+
+    /**
+     * 初始化页面进退场动画
+     */
+    protected void initSmoothPageAnimation(boolean isStartPage) {
+        if (isDefaultSmoothPageAnimation()) {//是否是默认转场动画
+            if (isStartPage) {
+                overridePendingTransition(R.anim.slide_in_common_start, R.anim.slide_out_common_start);
+            } else {
+                overridePendingTransition(R.anim.slide_in_common_finish, R.anim.slide_out_common_finish);
+            }
+        } else {
+            int[] animRes = getSlideInOrOutAnim();
+            if (animRes == null) return;
+
+            if (animRes.length != 4) {
+                throw new NullPointerException("自定义activity转场动画的res数组长度必须为4");
+            }
+
+            //如果四个值都等于0 说明没有需要执行的自定义页面转场动画
+            if (animRes[0] == 0 && animRes[1] == 0 && animRes[2] == 0 && animRes[3] == 0) return;
+
+            if (isStartPage) {
+                overridePendingTransition(animRes[0], animRes[1]);
+            } else {
+                overridePendingTransition(animRes[2], animRes[3]);
+            }
+        }
+    }
+
+    /**
+     * @return anim资源数组 length = 4
+     * 过去自定义进退场动画的资源，当isSmoothPageAnimation()返回false时调用。
+     * 特殊页面如果想实现其他效果，重写该方法返回anim资源数组即可。
+     */
+    protected int[] getSlideInOrOutAnim() {
+        return null;
+    }
+
+
+    /**
+     * @return 是否是默认的页面平滑切换动画  开启页面 ：右 → 左
+     */
+    protected boolean isDefaultSmoothPageAnimation() {
+        return true;
+    }
+
+    /**
+     * @return 是否是用转场动画
+     */
+    protected boolean usePageAnimation() {
+        return true;
     }
 }
