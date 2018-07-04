@@ -20,4 +20,11 @@
         android:layout_margin="5dp"
         android:text="调用权限辅助类检查相机权限" />
 
+
+    <Button
+        android:id="@+id/btn_use_event_bus"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_margin="5dp"
+        android:text="调用eventBus（未接收到消息）" />
 </LinearLayout>

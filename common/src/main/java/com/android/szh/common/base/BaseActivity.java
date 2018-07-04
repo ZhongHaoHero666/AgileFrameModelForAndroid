@@ -7,6 +7,7 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 
 import com.android.szh.common.R;
+import com.android.szh.common.eventbus.EventBusHelper;
 import com.android.szh.common.mvp.IPresenter;
 import com.android.szh.common.mvp.IView;
 import com.android.szh.common.rxjava.BaseObserver;
@@ -24,6 +25,8 @@ import io.reactivex.disposables.Disposable;
 /**
  * Created by sunzhonghao on 2018/5/17.
  * desc:Activity基类
+ *
+ * 如果使用EventBus,只需要在发送消息后，在接收消息的界面 实现EventHandlerMain 接口即可接收消息
  */
 public abstract class BaseActivity<Presenter extends IPresenter> extends AppCompatActivity implements IView {
     Context mContext;
@@ -37,6 +40,10 @@ public abstract class BaseActivity<Presenter extends IPresenter> extends AppComp
         mContext = this;
         beforeSuper();                         // 初始化(super.onCreate(savedInstanceState)之前调用)
         super.onCreate(savedInstanceState);
+
+        if (useEventBus()) {
+            EventBusHelper.register(this);
+        }
 
         if (usePageAnimation()) {
             initSmoothPageAnimation(true);                  // 初始化进退场动画
@@ -55,6 +62,13 @@ public abstract class BaseActivity<Presenter extends IPresenter> extends AppComp
             initImmersion();
         }
         loadData();                            // 加载数据
+    }
+
+    /**
+     * @return 默认不是用EventBus
+     */
+    protected boolean useEventBus() {
+        return false;
     }
 
     /**
@@ -107,6 +121,10 @@ public abstract class BaseActivity<Presenter extends IPresenter> extends AppComp
             mPresenter = null;
         }
         unsubscribe();//反注册订阅的异步处理
+
+        if (useEventBus()) {
+            EventBusHelper.unregister(this);
+        }
         super.onDestroy();
     }
 
