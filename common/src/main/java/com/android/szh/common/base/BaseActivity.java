@@ -3,6 +3,7 @@ package com.android.szh.common.base;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Message;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 
@@ -15,6 +16,7 @@ import com.android.szh.common.rxjava.RxJavaHelper;
 import com.android.szh.common.rxjava.transformer.ObservableTransformerAsync;
 import com.android.szh.common.rxjava.transformer.ObservableTransformerError;
 import com.android.szh.common.utils.ReflexHelper;
+import com.android.szh.common.utils.SafetyHandler;
 import com.gyf.barlibrary.ImmersionBar;
 
 import butterknife.ButterKnife;
@@ -25,10 +27,10 @@ import io.reactivex.disposables.Disposable;
 /**
  * Created by sunzhonghao on 2018/5/17.
  * desc:Activity基类
- *
+ * <p>
  * 如果使用EventBus,只需要在发送消息后，在接收消息的界面 实现EventHandlerMain 接口即可接收消息
  */
-public abstract class BaseActivity<Presenter extends IPresenter> extends AppCompatActivity implements IView {
+public abstract class BaseActivity<Presenter extends IPresenter> extends AppCompatActivity implements IView, SafetyHandler.Delegate {
     Context mContext;
     protected final String TAG = this.getClass().getSimpleName();
     ImmersionBar mImmersionBar;
@@ -268,5 +270,24 @@ public abstract class BaseActivity<Presenter extends IPresenter> extends AppComp
      */
     protected boolean usePageAnimation() {
         return true;
+    }
+
+
+    SafetyHandler mHandler;
+
+    /**
+     * 的到一个安全的Handler对象
+     */
+    protected SafetyHandler getHandler() {
+        if (mHandler == null) {
+            mHandler = SafetyHandler.create(this);
+        }
+        return mHandler;
+    }
+
+    //子类可以重写此方法，处理handler发送的消息
+    @Override
+    public void handleMessage(Message msg) {
+
     }
 }

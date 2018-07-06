@@ -2,6 +2,7 @@ package com.android.szh.common.base;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.os.Message;
 import android.support.annotation.IdRes;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -32,7 +33,7 @@ import io.reactivex.disposables.Disposable;
  * @author liyunlong
  * @date 2016/6/23 10:59
  */
-public abstract class BaseFragment<Presenter extends IPresenter> extends Fragment {
+public abstract class BaseFragment<Presenter extends IPresenter> extends Fragment implements SafetyHandler.Delegate {
 
     protected final String TAG = this.getClass().getSimpleName();
     protected BaseActivity activity;
@@ -312,5 +313,21 @@ public abstract class BaseFragment<Presenter extends IPresenter> extends Fragmen
 
     public boolean add(@io.reactivex.annotations.NonNull Disposable disposable) {
         return getCompositeDisposable().add(disposable);
+    }
+
+    /**
+     * 返回Handler对象
+     */
+    public SafetyHandler getHandler() {
+        if (mHandler == null) {
+            mHandler = SafetyHandler.create(this);
+        }
+        return mHandler;
+    }
+
+    //子类可以重写此方法，处理handler发送的消息
+    @Override
+    public void handleMessage(Message msg) {
+
     }
 }

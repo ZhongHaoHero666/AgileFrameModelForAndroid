@@ -18,7 +18,7 @@ import org.greenrobot.eventbus.ThreadMode;
 import butterknife.OnClick;
 
 /**
- * EventHandlerMain 接口是用来接收eventBus发送的消息
+ * EventHandlerMain 接口是用来接收eventBus发送的消息，使用时需要重写   false:useEventBus()
  */
 public class MainActivity extends BaseActivity implements EventHandlerMain<String> {
 
@@ -33,6 +33,7 @@ public class MainActivity extends BaseActivity implements EventHandlerMain<Strin
     protected boolean usePageAnimation() {
         return false;
     }
+
     @Override
     protected void initViews() {
         btnUseEventBus = findViewById(R.id.btn_use_event_bus);
