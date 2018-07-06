@@ -11,7 +11,6 @@ import java.util.concurrent.TimeUnit;
 
 import io.reactivex.Observable;
 import io.reactivex.android.schedulers.AndroidSchedulers;
-import io.reactivex.disposables.Disposable;
 import io.reactivex.functions.Consumer;
 import io.reactivex.functions.Function;
 
@@ -25,6 +24,12 @@ public class SplashActivity extends BaseActivity {
     @Override
     protected void initViews() {
 
+    }
+
+
+    @Override
+    protected boolean usePageAnimation() {
+        return false;
     }
 
     @Override
@@ -43,19 +48,14 @@ public class SplashActivity extends BaseActivity {
 
     @Override
     protected void loadData() {
-        //开始倒计时
-        Observable.interval(0, 1, TimeUnit.SECONDS)
+        //使用公用的订阅器开始倒计时
+        getCompositeDisposable()
+                .add(Observable.interval(0, 1, TimeUnit.SECONDS)
                 .take(3)
                 .map(new Function<Long, Long>() {
                     @Override
                     public Long apply(Long aLong) throws Exception {
                         return 2 - aLong;
-                    }
-                })
-                .doOnSubscribe(new Consumer<Disposable>() {
-                    @Override
-                    public void accept(Disposable disposable) throws Exception {
-
                     }
                 })
                 .observeOn(AndroidSchedulers.mainThread())//操作UI主要在UI线程
@@ -68,6 +68,6 @@ public class SplashActivity extends BaseActivity {
                             finish();
                         }
                     }
-                });
+                }));
     }
 }

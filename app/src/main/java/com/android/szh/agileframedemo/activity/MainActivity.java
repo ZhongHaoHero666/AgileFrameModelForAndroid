@@ -2,6 +2,9 @@ package com.android.szh.agileframedemo.activity;
 
 import android.content.Intent;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationSet;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 
 import com.android.szh.agileframedemo.R;
@@ -26,6 +29,10 @@ public class MainActivity extends BaseActivity implements EventHandlerMain<Strin
         return R.layout.activity_main;
     }
 
+    @Override
+    protected boolean usePageAnimation() {
+        return false;
+    }
     @Override
     protected void initViews() {
         btnUseEventBus = findViewById(R.id.btn_use_event_bus);

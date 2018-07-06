@@ -27,4 +27,5 @@
         android:layout_height="50dp"
         android:layout_margin="5dp"
         android:text="调用eventBus（未接收到消息）" />
+
 </LinearLayout>

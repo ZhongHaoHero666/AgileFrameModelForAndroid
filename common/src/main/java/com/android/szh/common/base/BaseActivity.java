@@ -58,7 +58,8 @@ public abstract class BaseActivity<Presenter extends IPresenter> extends AppComp
 
         ButterKnife.bind(this);         // butterKnife绑定
         initViews();                           // 初始化view
-        if (isImmersionPage()) {
+
+        if (isImmersionPage()) {               //如果使用了沉浸式
             initImmersion();
         }
         loadData();                            // 加载数据
@@ -180,7 +181,6 @@ public abstract class BaseActivity<Presenter extends IPresenter> extends AppComp
     protected void handleIntent(Intent intent) {
     }
 
-    ;
 
     /**
      * 初始化数据
