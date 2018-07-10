@@ -18,6 +18,7 @@
 * 网络请求和错误处理封装//TODO
 * 图片加载封装
 * 日志封装
+* GreenDao简单封装
 * MVP封装
 * 权限请求封装
 * 有数据、无数据、加载中、加载失败、网络异常、网络不佳页面切换管理器//TODO
@@ -25,9 +26,11 @@
 
 ## app 包结构介绍： ##
 *   activity：
-    *   MainActivity：主界面
+    *   MainActivity：主界面 （带有eventBus 接收消息的逻辑）
     *   MVPTestActivity：mvp 模式演示类的view
     *   PermissionAndCameraActivity：权限请求及相机相册调用的演示类
+    *   EventBusPostMessageActivity：EventBus发送请求的演示类
+    *   GreenDaoTestActivity：GreenDao的简单演示类（辅助工具在common Model 的greenDao包下）
 *   api：模块的接口管理
 *   contract：mvp契约接口管理类
 *   entry：实体类
