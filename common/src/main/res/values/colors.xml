@@ -19,6 +19,7 @@
     <!-- 列表条目按下状态的背景颜色 -->
     <color name="column_pressed">#ebebeb</color>
     <color name="column_label">#191919</color>
+    <color name="deep_blue">#0098ef</color>
 
 
 </resources>

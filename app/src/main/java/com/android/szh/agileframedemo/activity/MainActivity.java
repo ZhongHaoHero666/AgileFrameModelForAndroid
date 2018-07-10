@@ -2,13 +2,14 @@ package com.android.szh.agileframedemo.activity;
 
 import android.content.Intent;
 import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.AnimationSet;
-import android.view.animation.AnimationUtils;
 import android.widget.Button;
 
+import com.alibaba.android.arouter.launcher.ARouter;
 import com.android.szh.agileframedemo.R;
 import com.android.szh.common.base.BaseActivity;
+import com.android.szh.common.config.RoutePathConfig;
+import com.android.szh.common.constant.PageJumpsKeys;
+import com.android.szh.common.entity.ARouteSerializableBean;
 import com.android.szh.common.eventbus.BaseEvent;
 import com.android.szh.common.eventbus.EventHandlerMain;
 
@@ -39,7 +40,7 @@ public class MainActivity extends BaseActivity implements EventHandlerMain<Strin
         btnUseEventBus = findViewById(R.id.btn_use_event_bus);
     }
 
-    @OnClick({R.id.btn_show_mvp, R.id.btn_check_permission, R.id.btn_use_event_bus,R.id.btn_to_greendao_test})
+    @OnClick({R.id.btn_show_mvp, R.id.btn_check_permission, R.id.btn_use_event_bus, R.id.btn_to_greendao_test, R.id.btn_to_other_model})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.btn_show_mvp:
@@ -51,8 +52,17 @@ public class MainActivity extends BaseActivity implements EventHandlerMain<Strin
             case R.id.btn_use_event_bus:
                 startActivity(new Intent(this, EventBusPostMessageActivity.class));
                 break;
-                case R.id.btn_to_greendao_test:
+            case R.id.btn_to_greendao_test:
                 startActivity(new Intent(this, GreenDaoTestActivity.class));
+                break;
+            case R.id.btn_to_other_model:
+                //组件通讯需要传递的对象
+                ARouteSerializableBean aRouteSerializableBean = new ARouteSerializableBean("姓名", 18);
+
+                ARouter.getInstance().build(RoutePathConfig.ROUTE_USER_AROUTEDEMO)
+                        .withString(PageJumpsKeys.KEY_AROUTER_DEMO_PAGE_DATA_1, "data1")
+                        .withSerializable(PageJumpsKeys.KEY_AROUTER_DEMO_PAGE_DATA_2, aRouteSerializableBean)
+                        .navigation();
                 break;
         }
     }

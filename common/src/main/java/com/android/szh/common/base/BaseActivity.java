@@ -2,6 +2,7 @@ package com.android.szh.common.base;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Message;
 import android.support.annotation.Nullable;
@@ -64,6 +65,7 @@ public abstract class BaseActivity<Presenter extends IPresenter> extends AppComp
         if (isImmersionPage()) {               //如果使用了沉浸式
             initImmersion();
         }
+
         loadData();                            // 加载数据
     }
 

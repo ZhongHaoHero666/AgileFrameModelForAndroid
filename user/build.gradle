@@ -1,18 +1,17 @@
-apply plugin: 'com.android.application'
-
+apply plugin: 'com.android.library'
+apply plugin: 'com.jakewharton.butterknife'
 def config = rootProject.ext.android // 配置
 
 android {
     compileSdkVersion config.compileSdkVersion
     buildToolsVersion config.buildToolsVersion
+
     defaultConfig {
-        applicationId "com.android.szh.agileframedemo"
         minSdkVersion config.minSdkVersion
         targetSdkVersion config.targetSdkVersion
-        versionCode config.versionCode
-        versionName config.versionName
-        multiDexEnabled true
-        flavorDimensions "yourProjectName"
+        versionCode 1
+        versionName "1.0"
+        consumerProguardFiles 'proguard-rules.pro'
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
         javaCompileOptions {
@@ -20,8 +19,17 @@ android {
                 arguments = [moduleName: project.getName()]
             }
         }
-
     }
+
+    dexOptions {
+        jumboMode true              // 是否忽略方法数限制检查
+    }
+
+    lintOptions {
+        abortOnError false
+        checkReleaseBuilds false
+    }
+
     buildTypes {
         release {
             minifyEnabled false
@@ -31,11 +39,14 @@ android {
 }
 
 dependencies {
-    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    // JUnit
+    testImplementation "junit:junit:$junitVersion"
+
     implementation project(':common')
-    implementation project(':user')
     // ARouter(https://github.com/alibaba/arouter)
     annotationProcessor "com.alibaba:arouter-compiler:$aRouterCompilerVersion"
+
     // butterknife(https://github.com/JakeWharton/butterknife)
     annotationProcessor "com.jakewharton:butterknife-compiler:$butterknifeVersion"
 }
