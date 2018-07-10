@@ -9,9 +9,6 @@ import org.greenrobot.greendao.database.Database;
 
 /**
  * GreenDao辅助类
- *
- * @author liyunlong
- * @date 2017/10/20 18:21
  */
 public final class GreenDaoManager {
 

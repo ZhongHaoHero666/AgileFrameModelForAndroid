@@ -23,9 +23,6 @@ import java.util.List;
 
 /**
  * GreenDao数据库升级处理辅助类
- *
- * @author liyunlong
- * @date 2017/10/20 18:14
  */
 final class GreenDaoUpgradeHelper {
 

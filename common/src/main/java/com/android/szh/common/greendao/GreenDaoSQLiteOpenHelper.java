@@ -12,9 +12,6 @@ import java.util.List;
 
 /**
  * 数据库辅助类
- *
- * @author liyunlong
- * @date 2017/10/20 18:16
  */
 final class GreenDaoSQLiteOpenHelper extends DaoMaster.OpenHelper {
 
