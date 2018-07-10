@@ -39,7 +39,7 @@ public class MainActivity extends BaseActivity implements EventHandlerMain<Strin
         btnUseEventBus = findViewById(R.id.btn_use_event_bus);
     }
 
-    @OnClick({R.id.btn_show_mvp, R.id.btn_check_permission, R.id.btn_use_event_bus})
+    @OnClick({R.id.btn_show_mvp, R.id.btn_check_permission, R.id.btn_use_event_bus,R.id.btn_to_greendao_test})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.btn_show_mvp:
@@ -50,6 +50,9 @@ public class MainActivity extends BaseActivity implements EventHandlerMain<Strin
                 break;
             case R.id.btn_use_event_bus:
                 startActivity(new Intent(this, EventBusPostMessageActivity.class));
+                break;
+                case R.id.btn_to_greendao_test:
+                startActivity(new Intent(this, GreenDaoTestActivity.class));
                 break;
         }
     }

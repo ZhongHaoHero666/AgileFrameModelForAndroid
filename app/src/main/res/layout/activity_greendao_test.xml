@@ -1,38 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context="com.android.szh.agileframedemo.activity.MainActivity">
+    android:orientation="vertical">
 
     <Button
-        android:id="@+id/btn_show_mvp"
+        android:id="@+id/btn_insert"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_margin="5dp"
-        android:text="进入到mvp演示类" />
+        android:text="增加一条数据" />
 
     <Button
-        android:id="@+id/btn_check_permission"
+        android:id="@+id/btn_delete"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_margin="5dp"
-        android:text="调用权限辅助类检查相机权限" />
+        android:text="删除所有数据" />
 
 
     <Button
-        android:id="@+id/btn_use_event_bus"
+        android:id="@+id/btn_query"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_margin="5dp"
-        android:text="调用eventBus（未接收到消息）" />
+        android:text="查询所有数据" />
 
     <Button
-        android:id="@+id/btn_to_greendao_test"
+        android:id="@+id/btn_updata"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_margin="5dp"
-        android:text="进入到greenDao 演示界面" />
+        android:text="更新最新插入的一条数据" />
 
+    <TextView
+        android:id="@+id/tv_show_result"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:text="查询到的结果：" />
 </LinearLayout>

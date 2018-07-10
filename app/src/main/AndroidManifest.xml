@@ -30,6 +30,7 @@
         <activity android:name=".activity.MVPTestActivity" />
         <activity android:name=".activity.PermissionAndCameraActivity" />
         <activity android:name=".activity.EventBusPostMessageActivity" />
+        <activity android:name=".activity.GreenDaoTestActivity" />
     </application>
 
 </manifest>

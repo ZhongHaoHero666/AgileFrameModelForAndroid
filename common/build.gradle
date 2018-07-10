@@ -1,9 +1,8 @@
 apply plugin: 'com.android.library'
-//apply plugin: 'org.greenrobot.greendao'
+apply plugin: 'org.greenrobot.greendao'
 apply plugin: 'com.jakewharton.butterknife'
 
 def config = rootProject.ext.android // 配置
-//def librarys = rootProject.ext.dependencies // 依赖
 def database = rootProject.ext.greendao // 数据库
 
 android {
@@ -48,11 +47,11 @@ android {
     }
 }
 
-//greendao { // greendao配置
-//    schemaVersion database.schemaVersion    // 数据库schema版本(数据库版本号)
-//    daoPackage database.daoPackage          // 设置DaoMaster、DaoSession、Dao包名
-//    targetGenDir database.targetGenDir      // 设置DaoMaster、DaoSession、Dao目录
-//}
+greendao { // greendao配置
+    schemaVersion database.schemaVersion    // 数据库schema版本(数据库版本号)
+    daoPackage database.daoPackage          // 设置DaoMaster、DaoSession、Dao包名
+    targetGenDir database.targetGenDir      // 设置DaoMaster、DaoSession、Dao目录
+}
 
 dependencies {
     api fileTree(include: ['*.jar'], dir: 'libs')
