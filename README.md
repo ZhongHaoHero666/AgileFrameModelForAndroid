@@ -36,8 +36,30 @@
 *   entry：实体类
 *   model：mvp数据处理类Model
 *   presenter：mvp主持者Prsenter 用于实现view 和 model的交互
-    
+## user 包结构介绍： ##
+*   ARouterDemoActivity：用来演示Arouter进行组件见的通讯和跳转
+
 ## Common 包结构介绍： ##
+*   abslistview：封装的条目布局
+*   adapter：封装的ListView 适配器
+*   base：activity、fragment、presenter 基类的封装
+*   config：路由配置、URL配置
+*   constant：常量包 用户头像配置、页面跳转key管理
+*   delegate：适配器代理
+*   entity：各模块公用实体类
+*   eventbus：EventBus 封装
+*   exception：异常封装
+*   greendao：GreenDao生成文件目录，及简单数据库工具封装
+*   http：Http请求封装（使用retrofit2.0+）
+*   imageloader：图片加载器封装（使用Glide）
+*   logger：日志工具封装
+*   mvp：MVP接口规范
+*   permission：权限请求工具封装
+*   recycleview：列表封装
+*   rxjava：RxJava2.0 简单封装
+*   utils：工具类合集
+*   widget：公用的自定义控件
+
 
 ## 组件引用的第三方依赖 ##
 * [Retrofit](https://github.com/square/retrofit)
