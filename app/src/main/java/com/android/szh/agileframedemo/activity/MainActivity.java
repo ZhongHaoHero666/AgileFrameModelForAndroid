@@ -16,13 +16,14 @@ import com.android.szh.common.eventbus.EventHandlerMain;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
 
+import butterknife.BindView;
 import butterknife.OnClick;
 
 /**
  * EventHandlerMain 接口是用来接收eventBus发送的消息，使用时需要重写   false:useEventBus()
  */
 public class MainActivity extends BaseActivity implements EventHandlerMain<String> {
-
+    @BindView(R.id.btn_use_event_bus)
     Button btnUseEventBus;
 
     @Override
@@ -37,7 +38,6 @@ public class MainActivity extends BaseActivity implements EventHandlerMain<Strin
 
     @Override
     protected void initViews() {
-        btnUseEventBus = findViewById(R.id.btn_use_event_bus);
     }
 
     @OnClick({R.id.btn_show_mvp, R.id.btn_check_permission, R.id.btn_use_event_bus, R.id.btn_to_greendao_test, R.id.btn_to_other_model})
@@ -79,4 +79,5 @@ public class MainActivity extends BaseActivity implements EventHandlerMain<Strin
     protected boolean useEventBus() {
         return true;
     }
+
 }
