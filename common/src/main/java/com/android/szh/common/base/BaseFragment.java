@@ -29,9 +29,6 @@ import io.reactivex.disposables.Disposable;
 
 /**
  * Fragment基类
- *
- * @author liyunlong
- * @date 2016/6/23 10:59
  */
 public abstract class BaseFragment<Presenter extends IPresenter> extends Fragment implements SafetyHandler.Delegate {
 
