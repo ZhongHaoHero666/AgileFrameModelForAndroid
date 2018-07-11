@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <Button
+        android:id="@+id/btn_show_loading"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_margin="5dp"
+        android:text="点击显示加载中" />
+
+
+    <Button
+        android:id="@+id/btn_show_empty_page"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_margin="5dp"
+        android:text="点击显示空数据布局" />
+
+    <Button
+        android:id="@+id/btn_show_error_page"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_margin="5dp"
+        android:text="点击显示错误布局" />
+
+    <Button
+        android:id="@+id/btn_show_net_error_page"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_margin="5dp"
+        android:text="点击显示网络加载失败布局" />
+</LinearLayout>

@@ -31,6 +31,7 @@
         <activity android:name=".activity.PermissionAndCameraActivity" />
         <activity android:name=".activity.EventBusPostMessageActivity" />
         <activity android:name=".activity.GreenDaoTestActivity" />
+        <activity android:name=".activity.ViewHelperDemoActivity" />
     </application>
 
 </manifest>

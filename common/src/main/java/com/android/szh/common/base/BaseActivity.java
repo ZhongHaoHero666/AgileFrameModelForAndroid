@@ -12,6 +12,7 @@ import com.android.szh.common.R;
 import com.android.szh.common.eventbus.EventBusHelper;
 import com.android.szh.common.mvp.IPresenter;
 import com.android.szh.common.mvp.IView;
+import com.android.szh.common.mvp.ViewHelper;
 import com.android.szh.common.rxjava.BaseObserver;
 import com.android.szh.common.rxjava.RxJavaHelper;
 import com.android.szh.common.rxjava.transformer.ObservableTransformerAsync;
@@ -36,7 +37,8 @@ public abstract class BaseActivity<Presenter extends IPresenter> extends AppComp
     protected final String TAG = this.getClass().getSimpleName();
     ImmersionBar mImmersionBar;
     protected Presenter mPresenter;
-
+    //view 页面辅助工具
+    private ViewHelper viewHelper;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -291,5 +293,23 @@ public abstract class BaseActivity<Presenter extends IPresenter> extends AppComp
     @Override
     public void handleMessage(Message msg) {
 
+    }
+
+
+    //___________________________UI的方法_______________________
+
+    public ViewHelper getViewHelper() {
+        if (null == viewHelper) {
+            viewHelper = new ViewHelper(getContext());
+        }
+        return viewHelper;
+    }
+
+    protected void showLoadingDialog() {
+        getViewHelper().showLoadingDialog();
+    }
+
+    protected void hideLoadingDialog() {
+        getViewHelper().hideLoadingDialog();
     }
 }
