@@ -76,6 +76,8 @@ public abstract class BaseFragment<Presenter extends IPresenter> extends Fragmen
                 parent.removeView(rootView);
             }
         }
+
+        loadData();
         return rootView;
     }
 
