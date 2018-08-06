@@ -11,14 +11,16 @@
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_margin="5dp"
-        android:text="进入到mvp演示类" />
+        android:text="进入到mvp演示类"
+        android:textAllCaps="false" />
 
     <Button
         android:id="@+id/btn_check_permission"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_margin="5dp"
-        android:text="调用权限辅助类检查相机权限" />
+        android:text="调用权限辅助类检查相机权限"
+        android:textAllCaps="false" />
 
 
     <Button
@@ -26,27 +28,31 @@
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_margin="5dp"
-        android:text="调用eventBus（未接收到消息）" />
+        android:text="调用EventBus（未接收到消息）"
+        android:textAllCaps="false" />
 
     <Button
         android:id="@+id/btn_to_greendao_test"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_margin="5dp"
-        android:text="进入到greenDao 演示界面" />
+        android:text="进入到GreenDao 演示界面"
+        android:textAllCaps="false" />
 
     <Button
         android:id="@+id/btn_to_other_model"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_margin="5dp"
-        android:text="使用ARoute进入到其他Model的 Activity" />
+        android:text="使用ARoute进入到其他Model的 Activity"
+        android:textAllCaps="false" />
 
     <Button
         android:id="@+id/btn_to_view_demo"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_margin="5dp"
-        android:text="进入到viewHelper功能演界面" />
+        android:text="进入到ViewHelper功能演界面"
+        android:textAllCaps="false" />
 
 </LinearLayout>

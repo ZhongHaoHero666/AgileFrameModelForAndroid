@@ -1,6 +1,7 @@
 package com.android.szh.common.mvp;
 
 import android.content.Context;
+import android.view.View;
 import android.widget.Toast;
 
 import com.android.szh.common.dialog.IDialogProvider;
@@ -15,6 +16,8 @@ import com.scwang.smartrefresh.layout.SmartRefreshLayout;
  */
 public class ViewHelper implements IViewHepler {
 
+    //页面内容布局
+    private View contentView;
 
     private Context context;
     private Toast toast;
@@ -22,13 +25,18 @@ public class ViewHelper implements IViewHepler {
     private SmartRefreshLayout refreshLayout;
 //    private StatusLayoutManager statusLayoutManager;
 
-    public ViewHelper(Context context) {
-        this(context, new LoadingDialogProvider(context));
+    public ViewHelper(Context context, View contentView) {
+        this(context, new LoadingDialogProvider(context), contentView);
     }
 
-    public ViewHelper(Context context, IDialogProvider dialogProvider) {
+
+    public ViewHelper(Context context, IDialogProvider dialogProvider, View contentView) {
         this.context = context;
         this.dialogProvider = dialogProvider;
+
+        if (contentView != null) {
+            this.contentView = contentView;
+        }
     }
 
     public Context getContext() {
@@ -68,31 +76,44 @@ public class ViewHelper implements IViewHepler {
 
     @Override
     public void showContentLayout() {
-
+        if (contentView == null) {
+            return;
+        }
     }
 
     @Override
     public void showEmptyLayout() {
-
+        if (contentView == null) {
+            return;
+        }
     }
 
     @Override
     public void showErrorLayout() {
-
+        if (contentView == null) {
+            return;
+        }
     }
 
     @Override
     public void showNetworkErrorLayout() {
-
+        if (contentView == null) {
+            return;
+        }
     }
 
     @Override
     public void showNetworkPoorLayout() {
-
+        if (contentView == null) {
+            return;
+        }
     }
 
     @Override
     public void restoreLayout() {
+        if (contentView == null) {
+            return;
+        }
 
     }
 }

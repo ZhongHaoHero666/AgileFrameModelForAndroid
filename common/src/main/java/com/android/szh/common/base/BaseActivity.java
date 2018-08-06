@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.os.Message;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
 
 import com.android.szh.common.R;
 import com.android.szh.common.eventbus.EventBusHelper;
@@ -206,6 +207,14 @@ public abstract class BaseActivity<Presenter extends IPresenter> extends AppComp
     }
 
     /**
+     * 获取页面的内容父布局（包裹页面内容的容器）
+     * 子类如果需要使用空布局，网络异常布局，加载错误布局，则this的子类必须要重写该方法
+     */
+    protected View getContentView() {
+        return null;
+    }
+
+    /**
      * @return 获取context
      */
     @Override
@@ -298,9 +307,12 @@ public abstract class BaseActivity<Presenter extends IPresenter> extends AppComp
 
     //___________________________UI的方法_______________________
 
+    /**
+     * @return 布局视图辅助类
+     */
     public ViewHelper getViewHelper() {
         if (null == viewHelper) {
-            viewHelper = new ViewHelper(getContext());
+            viewHelper = new ViewHelper(getContext(), getContentView());
         }
         return viewHelper;
     }
