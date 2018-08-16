@@ -138,6 +138,9 @@ dependencies {
     //仿ios选择器
     api "com.contrarywind:Android-PickerView:$pickerViewVersion"
 
+    //RetrofitUrlManager 动态替换retrofitd的baseUrl
+    implementation "me.jessyan:retrofit-url-manager:$retrofitUrlManagerVersion"
+
     //leakcanary
     debugImplementation "com.squareup.leakcanary:leakcanary-android:$leakcanaryVersion"
     releaseImplementation "com.squareup.leakcanary:leakcanary-android-no-op:$leakcanaryVersion"

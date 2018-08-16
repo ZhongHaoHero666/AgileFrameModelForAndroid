@@ -32,6 +32,7 @@
         <activity android:name=".activity.EventBusPostMessageActivity" />
         <activity android:name=".activity.GreenDaoTestActivity" />
         <activity android:name=".activity.ViewHelperDemoActivity" />
+        <activity android:name=".activity.MultipleBaseUrlSwitchActivity" />
     </application>
 
 </manifest>

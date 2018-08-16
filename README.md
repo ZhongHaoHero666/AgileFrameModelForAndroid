@@ -15,7 +15,8 @@
 ## 基础服务组件（Common）功能介绍： ##
 * 第三方依赖及其封装(Rxjava、EventBus、GreenDao、Glide等)
 * Activity、Fragment、Adapter的基类(异步请求，通知，转场动画诸多功能均已实现)
-* 网络请求和错误处理封装//TODO
+* 网络请求（使用* [RetrofitUrlManager](https://github.com/JessYanCoding/RetrofitUrlManager)动态修改baseUrl）
+* 页面异常统一处理(网络错误，加载失败，空页面)//TODO
 * 图片加载封装
 * 日志封装
 * GreenDao简单封装
@@ -23,7 +24,8 @@
 * 权限请求封装
 * 有数据、无数据、加载中、加载失败、网络异常、网络不佳页面切换管理器//TODO
 * 通用的接口、常量类、工具类和公共组件
-* KotLin集成演示//TODO
+* KotLin集成演示（简化版见[Kotlin-AgileFrameModelForAndroid](https://github.com/ZhongHaoHero666/Kotlin-AgileFrameModelForAndroid)）
+
 ## app 包结构介绍： ##
 *   activity：
     *   MainActivity：主界面 （带有eventBus 接收消息的逻辑）
@@ -31,6 +33,9 @@
     *   PermissionAndCameraActivity：权限请求及相机相册调用的演示类
     *   EventBusPostMessageActivity：EventBus发送请求的演示类
     *   GreenDaoTestActivity：GreenDao的简单演示类（辅助工具在common Model 的greenDao包下）
+    *   MultipleBaseUrlSwitchActivity：演示动态切换BaseUrl的类
+    *   ViewHelperDemoActivity：演示多种页面状态切换
+    
 *   api：模块的接口管理
 *   contract：mvp契约接口管理类
 *   entry：实体类
@@ -73,6 +78,6 @@
 * [BGABanner](https://github.com/bingoogolapple/BGABanner-Android)
 * [FlycoTabLayout](https://github.com/H07000223/FlycoTabLayout)
 * [SmartRefreshLayout](https://github.com/scwang90/SmartRefreshLayout)
-
+* [RetrofitUrlManager](https://github.com/JessYanCoding/RetrofitUrlManager)
 
 

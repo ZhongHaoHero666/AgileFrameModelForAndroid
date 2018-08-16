@@ -13,6 +13,7 @@ import android.support.v7.app.AppCompatDelegate;
 import android.text.TextUtils;
 
 import com.alibaba.android.arouter.launcher.ARouter;
+import com.android.szh.common.config.UrlConfig;
 import com.android.szh.common.logger.Logger;
 import com.android.szh.common.logger.printer.FilePrinter;
 import com.android.szh.common.logger.printer.LogcatPrinter;
@@ -32,7 +33,9 @@ import com.squareup.leakcanary.LeakCanary;
 
 import io.reactivex.functions.Consumer;
 import io.reactivex.plugins.RxJavaPlugins;
+import me.jessyan.retrofiturlmanager.RetrofitUrlManager;
 import okhttp3.OkHttpClient;
+import retrofit2.http.Url;
 
 /**
  * Application基类
@@ -52,6 +55,7 @@ import okhttp3.OkHttpClient;
  * </ul>
  * <p>
  * Created by sunzhonghao
+ *
  * @date 2018/5/6 14:43
  */
 public abstract class BaseApplication extends Application {
@@ -141,6 +145,9 @@ public abstract class BaseApplication extends Application {
         super.onCreate();
         sInstance = this;
         DEBUG = !BuildConfig.ONLINE;
+
+        //声明一个默认BaseUrl之外的BaseUrl
+        RetrofitUrlManager.getInstance().putDomain(UrlConfig.FLAG_MULTIPLE_BASE_URL_A, UrlConfig.getDominUrlA());
 
         String processName = AppHelper.getProcessName(this, Process.myPid());
         Logger.i(TAG, "当前进程为：" + processName);

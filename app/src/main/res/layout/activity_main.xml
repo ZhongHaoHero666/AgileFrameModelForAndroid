@@ -52,7 +52,15 @@
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_margin="5dp"
-        android:text="进入到ViewHelper功能演界面"
+        android:text="进入到ViewHelper功能演示界面"
+        android:textAllCaps="false" />
+
+    <Button
+        android:id="@+id/btn_to_multiple_base_url_demo"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_margin="5dp"
+        android:text="进入到baseUrl动态切换演示界面"
         android:textAllCaps="false" />
 
 </LinearLayout>

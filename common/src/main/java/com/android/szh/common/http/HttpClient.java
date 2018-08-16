@@ -2,7 +2,7 @@ package com.android.szh.common.http;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
-
+import android.util.SparseArray;
 
 import com.android.szh.common.config.UrlConfig;
 import com.android.szh.common.http.api.BaseApiService;
@@ -19,7 +19,6 @@ import com.android.szh.common.http.model.HttpHeaders;
 import com.android.szh.common.http.model.HttpParams;
 import com.android.szh.common.utils.CheckHelper;
 
-
 import java.io.File;
 import java.io.InputStream;
 import java.net.Proxy;
@@ -32,6 +31,7 @@ import java.util.concurrent.TimeUnit;
 
 import javax.net.ssl.HostnameVerifier;
 
+import me.jessyan.retrofiturlmanager.RetrofitUrlManager;
 import okhttp3.Authenticator;
 import okhttp3.Cache;
 import okhttp3.CertificatePinner;
@@ -106,8 +106,9 @@ public class HttpClient {
         Retrofit.Builder retrofitBuilder = generateRetrofit(builder);
         // 初始化OkHttpClient.Builder
         OkHttpClient.Builder okhttpBuilder = generateOkHttpClient(builder);
-        // 创建OkHttpClient
-        okHttpClient = okhttpBuilder.build();
+        // 使用RetrofitUrlManager工具 创建OkHttpClient
+        okHttpClient = RetrofitUrlManager.getInstance().with(okhttpBuilder)
+                .build();
         // 设置Retrofit client
         retrofitBuilder.client(okHttpClient);
         // 创建Retrofit
@@ -301,11 +302,31 @@ public class HttpClient {
         return params;
     }
 
+
     /**
      * 创建ApiService
      */
     public <T> T create(final Class<T> service) {
-        return retrofit.create(service);
+        return getServiceFromCache(service);
+    }
+
+    //维护service缓存的Array对象
+    private SparseArray serviceArray = new SparseArray();
+
+    /**
+     * @param service Class
+     * @param <E>     返回的类型
+     * @return 从维护的Array缓存中获取相应的apiService实例
+     */
+    private synchronized <E> E getServiceFromCache(final Class<E> service) {
+        int serviceKey = service.hashCode();
+        if (serviceArray.get(serviceKey) != null) {
+            return (E) serviceArray.get(serviceKey);
+        } else {
+            E serviceValue = retrofit.create(service);
+            serviceArray.append(serviceKey, serviceValue);
+            return serviceValue;
+        }
     }
 
     /**
@@ -314,9 +335,7 @@ public class HttpClient {
      * @param baseUrl
      */
     public void updateBaseUrl(String baseUrl) {
-        retrofit = retrofit.newBuilder()
-                .baseUrl(UrlConfig.getDominUrl())
-                .build();
+        RetrofitUrlManager.getInstance().setGlobalDomain(baseUrl);
     }
 
     /**

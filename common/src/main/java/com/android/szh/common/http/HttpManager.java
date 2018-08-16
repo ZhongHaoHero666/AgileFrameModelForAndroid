@@ -18,8 +18,10 @@ import com.android.szh.common.rxjava.transformer.ObservableTransformerSync;
 
 import io.reactivex.Observable;
 import io.reactivex.disposables.Disposable;
+import me.jessyan.retrofiturlmanager.RetrofitUrlManager;
 import okhttp3.OkHttpClient;
 import retrofit2.Retrofit;
+import retrofit2.http.Url;
 
 /**
  * HttpClient管理器(单例)
@@ -114,30 +116,29 @@ public class HttpManager {
         getHttpClient().updateBaseUrl(baseUrl);
     }
 
+
     /**
      * 创建ApiService
      */
     public <T> T create(final Class<T> service) {
+        //修改baseUrl,不需要直接newBuild，和apiService中的@Hearder注解结合
         return getHttpClient().create(service);
     }
 
-    /**
-     * 创建ApiService
+    /*
+     *当增加一个baseUrl时，需要在if 语句中添加UrlConfig.Falg判断
+     *
+     * @param baseUrl baseUrl
+     * @return 根据 baseUrl获取Flag, from RetrofitUrlManager
      */
-    public BaseApiService create(String baseUrl) {
-        return create(baseUrl, BaseApiService.class);
+    private String getBaseUrlFlag(String baseUrl) {
+        //如果不是默认的baseUrl
+        if (!UrlConfig.getDominUrl().equals(baseUrl)) {
+            return UrlConfig.FLAG_MULTIPLE_BASE_URL_A;
+        } else {
+            return UrlConfig.FLAG_MULTIPLE_BASE_URL_A;
+        }
     }
-
-    /**
-     * 创建ApiService
-     */
-    public <T> T create(String baseUrl, final Class<T> service) {
-        return getRetrofit().newBuilder()
-                .baseUrl(UrlConfig.getDominUrl())
-                .build()
-                .create(service);
-    }
-
     /**
      * 设置是否开启日志打印
      */

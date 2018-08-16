@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="25dp">
+
+    <Button
+        android:id="@+id/test_normal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="正常访问网络"
+        android:textAllCaps="false" />
+
+    <Button
+        android:id="@+id/test_switch_base_url"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="切换BaseUrl后访问网络"
+        android:textAllCaps="false" />
+
+    <TextView
+        android:id="@+id/mvp_result"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp" />
+
+</LinearLayout>

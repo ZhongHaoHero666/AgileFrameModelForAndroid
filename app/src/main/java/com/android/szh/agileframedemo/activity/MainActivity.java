@@ -40,7 +40,8 @@ public class MainActivity extends BaseActivity implements EventHandlerMain<Strin
     protected void initViews() {
     }
 
-    @OnClick({R.id.btn_show_mvp, R.id.btn_check_permission, R.id.btn_use_event_bus, R.id.btn_to_greendao_test, R.id.btn_to_other_model, R.id.btn_to_view_demo})
+    @OnClick({R.id.btn_show_mvp, R.id.btn_check_permission, R.id.btn_use_event_bus, R.id.btn_to_greendao_test,
+            R.id.btn_to_other_model, R.id.btn_to_view_demo, R.id.btn_to_multiple_base_url_demo})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.btn_show_mvp:
@@ -66,6 +67,9 @@ public class MainActivity extends BaseActivity implements EventHandlerMain<Strin
                 break;
             case R.id.btn_to_view_demo:
                 startActivity(new Intent(this, ViewHelperDemoActivity.class));
+                break;
+            case R.id.btn_to_multiple_base_url_demo:
+                startActivity(new Intent(this, MultipleBaseUrlSwitchActivity.class));
                 break;
             default:
                 break;
