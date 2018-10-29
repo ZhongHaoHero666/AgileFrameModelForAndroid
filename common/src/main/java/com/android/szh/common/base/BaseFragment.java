@@ -77,7 +77,6 @@ public abstract class BaseFragment<Presenter extends IPresenter> extends Fragmen
             }
         }
 
-        loadData();
         return rootView;
     }
 
@@ -91,6 +90,7 @@ public abstract class BaseFragment<Presenter extends IPresenter> extends Fragmen
                 onFragmentVisibleChange(true);
             }
         }
+        loadData();
     }
 
     @Override

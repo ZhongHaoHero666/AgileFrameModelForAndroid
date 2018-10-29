@@ -21,6 +21,9 @@ import butterknife.OnClick;
 
 /**
  * EventHandlerMain 接口是用来接收eventBus发送的消息，使用时需要重写   false:useEventBus()
+ * <p>
+ * Created by sunzhonghao on 2018/7/10.
+ * desc:主界面
  */
 public class MainActivity extends BaseActivity implements EventHandlerMain<String> {
     @BindView(R.id.btn_use_event_bus)
@@ -76,8 +79,9 @@ public class MainActivity extends BaseActivity implements EventHandlerMain<Strin
         }
     }
 
-    //重写此方法是 一定要带有  @Subscribe(threadMode = ThreadMode.MAIN)
-    //否则将会报错 its super classes have no public methods with the @Subscribe
+    /* 重写此方法是 一定要带有  @Subscribe(threadMode = ThreadMode.MAIN)
+     * 否则将会报错 its super classes have no public methods with the @Subscribe
+     */
     @Override
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void onEventMainThread(BaseEvent<String> event) {
