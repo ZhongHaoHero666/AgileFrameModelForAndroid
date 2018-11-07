@@ -7,7 +7,7 @@ def database = rootProject.ext.greendao // 数据库
 
 android {
     compileSdkVersion config.compileSdkVersion
-    buildToolsVersion '28.0.2'
+    buildToolsVersion config.buildToolsVersion
 
     defaultConfig {
         minSdkVersion config.minSdkVersion
