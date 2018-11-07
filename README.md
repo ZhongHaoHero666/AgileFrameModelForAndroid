@@ -1,6 +1,22 @@
 # AgileFrameModelForAndroid
 一个提供敏捷开发基础服务的android开源组件（An android open source component that provides the basic services of agile development.）
-### 以上为该敏捷开发框架的基础功能，开发者可以直接下载Demo，然后将Common model导入到项目中，然后仿照Demo中app model的业务逻辑实现相应的功能。
+### 以下为该敏捷开发框架的基础功能，开发者可以直接下载Demo，然后将Common model导入到项目中，然后仿照Demo中app model的业务逻辑实现相应的功能。也可以使用Gralde
+#### Step 1. Add the JitPack repository to your build file
+```	
+allprojects {
+		repositories {
+			...
+			maven { url 'https://jitpack.io' }
+		}
+	}
+   ```
+   #### Step 2. Add the dependency
+```		
+dependencies {
+	        implementation 'com.github.ZhongHaoHero666:AgileFrameModelForAndroid:v1.0.1'
+	}
+   ```
+   
 # 具体说明如下 ：
 ## 基础服务组件说明 ##
 * 该项目总体架构如下所述，但现在处于逐渐补充的阶段，在本项目未基本完成前，若遇到相应问题，可直接联系qq：564045867
