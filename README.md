@@ -13,7 +13,7 @@ allprojects {
    #### Step 2. Add the dependency
 ```		
 dependencies {
-	        implementation 'com.github.ZhongHaoHero666:AgileFrameModelForAndroid:Tag'
+	        implementation 'com.github.ZhongHaoHero666:AgileFrameModelForAndroid:v1.0.1'
 	}
    ```
    
